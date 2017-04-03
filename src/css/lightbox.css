@@ -75,8 +75,17 @@ html.lb-disable-scrolling {
   display: block;
   width: 32px;
   height: 32px;
-  margin: 0 auto;
-  background: url(../images/loading.gif) no-repeat;
+  margin: 0 auto;  
+  content: '';
+  border: 4px solid #ccc;
+  border-top: 4px solid #999;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .lb-nav {
@@ -107,13 +116,33 @@ html.lb-disable-scrolling {
   width: 34%;
   left: 0;
   float: left;
-  background: url(../images/prev.png) left 48% no-repeat;
+  position: relative;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   -webkit-transition: opacity 0.6s;
   -moz-transition: opacity 0.6s;
   -o-transition: opacity 0.6s;
   transition: opacity 0.6s;
+}
+
+.lb-nav a.lb-prev:before,
+.lb-nav a.lb-prev:after {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 32px;
+    top: 50%;
+    left: 0;
+    background: #FFF;
+    border-radius: 4px;
+}
+
+.lb-nav a.lb-prev:before {
+  transform: rotate(-45deg) translateX(50%) translateY(50%);
+}
+
+.lb-nav a.lb-prev:after {
+  transform: rotate(45deg) translateX(50%) translateY(-50%);
 }
 
 .lb-nav a.lb-prev:hover {
@@ -125,13 +154,33 @@ html.lb-disable-scrolling {
   width: 64%;
   right: 0;
   float: right;
-  background: url(../images/next.png) right 48% no-repeat;
+  position: relative;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   -webkit-transition: opacity 0.6s;
   -moz-transition: opacity 0.6s;
   -o-transition: opacity 0.6s;
   transition: opacity 0.6s;
+}
+
+.lb-nav a.lb-next:before,
+.lb-nav a.lb-next:after {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 32px;
+    top: 50%;
+    right: 0;
+    background: #FFF;
+    border-radius: 4px;
+}
+
+.lb-nav a.lb-next:before {
+  transform: rotate(45deg) translateX(-50%) translateY(50%);
+}
+
+.lb-nav a.lb-next:after {
+  transform: rotate(-45deg) translateX(-50%) translateY(-50%);
 }
 
 .lb-nav a.lb-next:hover {
@@ -189,7 +238,7 @@ html.lb-disable-scrolling {
   float: right;
   width: 30px;
   height: 30px;
-  background: url(../images/close.png) top right no-repeat;
+  position: relative;
   text-align: right;
   outline: none;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
@@ -198,6 +247,26 @@ html.lb-disable-scrolling {
   -moz-transition: opacity 0.2s;
   -o-transition: opacity 0.2s;
   transition: opacity 0.2s;
+}
+
+.lb-data .lb-close:before,
+.lb-data .lb-close:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    background: #FFF;
+    border-radius: 2px;
+}
+
+.lb-data .lb-close:before {
+  transform: rotate(45deg);
+}
+
+.lb-data .lb-close:after {
+  transform: rotate(-45deg);
 }
 
 .lb-data .lb-close:hover {
